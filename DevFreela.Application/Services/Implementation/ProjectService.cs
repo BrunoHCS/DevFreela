@@ -83,7 +83,6 @@ namespace DevFreela.Application.Services.Implementation
         public void Update(UpdateProjectInputModel inputModel)
         {
             var project = _dbContext.Projects.SingleOrDefault(p => p.Id == inputModel.Id);
-
         }
     }
 }

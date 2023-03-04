@@ -16,19 +16,24 @@ namespace DevFreela.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            return Ok();
+            var user = _userService.GetUser(id);
+
+            if (user == null)
+                return NotFound();
+
+            return Ok(user);
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] NewUserInputModel inputModel)
+        public IActionResult Post([FromBody] CreateUserInputModel inputModel)
         {
-            var id = _userService.CreateUser(inputModel);
+            var id = _userService.Create(inputModel);
 
             return CreatedAtAction(nameof(GetById), new { id = id }, inputModel);
         }
 
         [HttpPut("{id}/login")]
-        public IActionResult Login(int id, [FromBody] NewUserInputModel inputModel)
+        public IActionResult Login(int id, [FromBody] CreateUserInputModel inputModel)
         {
             return NoContent();
         }
