@@ -5,6 +5,11 @@ namespace DevFreela.Core.Entities
 {
     public class User : BaseEntity
     {
+        public User()
+        {
+
+        }
+
         public User(string fullname, string email, DateTime birthDate)
         {
             FullName = fullname;
@@ -26,5 +31,6 @@ namespace DevFreela.Core.Entities
         public List<UserSkill> Skills { get; private set; }
         public List<Project> OwnerProjects { get; private set; }
         public List<Project> FreelanceProjects { get; private set; }
+        public List<ProjectComments> Comments { get; private set; }
     }
 }
