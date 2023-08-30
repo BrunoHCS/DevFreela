@@ -2,7 +2,6 @@
 using DevFreela.Application.Commands.CreateProject;
 using DevFreela.Application.Commands.DeleteProject;
 using DevFreela.Application.Commands.UpdateProject;
-using DevFreela.Application.InputModels;
 using DevFreela.Application.Queries.GetAllProject;
 using DevFreela.Application.Services.Interfaces;
 using MediatR;
