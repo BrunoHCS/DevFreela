@@ -23,14 +23,6 @@ namespace DevFreela.Application.Services.Implementation
             _connectionString = configuration.GetConnectionString("DevFreelaCs");
         }
 
-        public void Finish(int id)
-        {
-            var project = _dbContext.Projects.SingleOrDefault(p => p.Id == id);
-
-            project.Finish();
-            _dbContext.SaveChanges();
-        }
-
         public ProjectDetailsViewModel GetById(int id)
         {
             var project = _dbContext.Projects
@@ -52,26 +44,6 @@ namespace DevFreela.Application.Services.Implementation
                     project.Freelancer.FullName);
 
             return projectDetailsViewModel;
-        }
-
-        public void Start(int id)
-        {
-            var project = _dbContext.Projects.SingleOrDefault(p => p.Id == id);
-
-            project.Start();
-
-            //Entity Framework Core
-            //_dbContext.SaveChanges();
-
-            //DAPPER
-            using (var sqlConnection = new SqlConnection(_connectionString))
-            {
-                sqlConnection.Open();
-
-                var script = "UPDATE TB_Projects SET Status = @status, StartedAt = @startedat WHERE Id = @id";
-
-                sqlConnection.Execute(script, new { status = project.Status, startedat = project.StartedAt, id = id });
-            }
         }
     }
 }
