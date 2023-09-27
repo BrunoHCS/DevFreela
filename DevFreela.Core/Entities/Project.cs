@@ -57,5 +57,12 @@ namespace DevFreela.Core.Entities
                 FinishedAt = DateTime.Now;
             }
         }
+
+        public void Update(string title, string description, decimal totalCost)
+        {
+            Title = title;
+            Description = description;
+            TotalCost = totalCost;
+        }
     }
 }
